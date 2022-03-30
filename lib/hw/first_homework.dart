@@ -26,14 +26,6 @@ class HomePage extends State<ConvertorApp> {
   final valueController = TextEditingController();
   bool validationFlag = false;
 
-
-  /*String getError(bool validationFlag) {
-    if(validationFlag)
-      return 'EnterValid';
-    return '';
-  }
-  */
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
