@@ -26,14 +26,6 @@ class HomePage extends State<ConvertorApp> {
   final valueController = TextEditingController();
   bool validationFlag = false;
 
-
-  /*String getError(bool validationFlag) {
-    if(validationFlag)
-      return 'EnterValid';
-    return '';
-  }
-  */
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +45,7 @@ class HomePage extends State<ConvertorApp> {
             fit: BoxFit.cover,
             ),
             TextField(
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
                 controller: valueController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -74,7 +67,7 @@ class HomePage extends State<ConvertorApp> {
                   else
                   setState(() {
                     validationFlag = false;
-                    valueInEUR = (int.parse(valueController.text) * 4.95).toString();
+                    valueInEUR = (int.parse(valueController.text) * 4.95).toStringAsFixed(2);
                   });
               },
               child: Text('Convert'),
