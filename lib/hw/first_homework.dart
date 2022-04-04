@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(FirstHW());
+  runApp(const FirstHW());
 }
 
 class FirstHW extends StatelessWidget{
+  const FirstHW({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: ConvertorApp(),
     );
   }
@@ -17,6 +19,7 @@ class FirstHW extends StatelessWidget{
 class ConvertorApp extends StatefulWidget {
   const ConvertorApp({Key? key}) : super(key: key);
 
+  @override
   HomePage createState() => HomePage();
 }
 
@@ -38,8 +41,8 @@ class HomePage extends State<ConvertorApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Currency convertor"),
-        actions: [
+        title: const Text("Currency convertor"),
+        actions: const [
           Icon(Icons.all_inclusive_rounded)
         ],
         backgroundColor: Colors.lightGreen,
@@ -55,7 +58,7 @@ class HomePage extends State<ConvertorApp> {
             TextField(
                 controller: valueController,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   hintText: 'Enter the amount in EUR',
                   errorText: validationFlag ? 'Enter a valid number' : null
             )
@@ -66,24 +69,24 @@ class HomePage extends State<ConvertorApp> {
                   primary: Colors.green,
                 ),
               onPressed: () {
-                  if(valueController.text.isEmpty || valueController.text.contains(RegExp(r'[a-z]')) || valueController.text.contains(RegExp(r'[A-Z]')) || valueController.text.contains(RegExp(r'[#?!@,.$%^&*-]')))
+                  if(valueController.text.isEmpty || valueController.text.contains(RegExp(r'[a-z]')) || valueController.text.contains(RegExp(r'[A-Z]')) || valueController.text.contains(RegExp(r'[#?!@,.$%^&*-]'))) {
                     setState(() {
                       validationFlag = true;
                     });
-
-                  else
-                  setState(() {
+                  } else {
+                    setState(() {
                     validationFlag = false;
                     valueInEUR = (int.parse(valueController.text) * 4.95).toString();
                   });
+                  }
               },
-              child: Text('Convert'),
+              child: const Text('Convert'),
             ),
             Container(
               alignment: Alignment.center,
               child: Text(
                 valueInEUR,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 30,
                   color: Colors.blueGrey
                 ),
